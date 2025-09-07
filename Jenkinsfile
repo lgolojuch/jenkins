@@ -8,15 +8,17 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo "Building project..."
+                echo "Checkout to the repo..."
+                git url: 'https://github.com/lukaszgolojuch/PlaywrightTests', branch: "main"
             }
         }
 
         stage('Test') {
             steps {
                 echo "Running tests..."
+                sh './gradlew clean test'
             }
         }
 
