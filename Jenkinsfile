@@ -3,6 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'BRANCH', defaultValue: 'main', description: 'Checkout branch')
+        booleanValue(name: 'RUN_TESTS', defaultValue: 'true', description: 'Czy uruchomić testy?')
     }
     
     stages {
@@ -20,6 +21,9 @@ pipeline {
         }
 
         stage('Test') {
+            when {
+                expression { return params.RUN_TESTS == true }
+            }
             steps {
                 echo "Running tests..."
                 sh './gradlew clean test'
