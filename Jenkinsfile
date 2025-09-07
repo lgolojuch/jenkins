@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'BRANCH', defaultValue: 'main', description: 'Checkout branch')
-        booleanValue(name: 'RUN_TESTS', defaultValue: 'true', description: 'Czy uruchomić testy?')
+        booleanParam(name: 'RUN_TESTS', defaultValue: 'true', description: 'Czy uruchomić testy?')
     }
     
     stages {
